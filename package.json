@@ -1,5 +1,6 @@
 {
   "name": "react-native-study",
+  "author": "anportfolio.vercel.app",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
