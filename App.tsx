@@ -13,7 +13,7 @@ import {
   TouchableWithoutFeedback,
   View
 } from "react-native";
-import FlexBox from "./components/flex.box";
+import { AntDesign } from "@expo/vector-icons";
 
 interface ITodo {
   id: number;
@@ -54,64 +54,79 @@ export default function App() {
 
   //jsx
   return (
-    // <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    //   <View style={styles.container}>
-    //     {/* header */}
-    //     <Text style={styles.header}>Todo APP</Text>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        {/* header */}
+        <Text style={styles.header}>Todo APP</Text>
 
-    //     {/* form  */}
-    //     <View style={styles.body}>
-    //       <TextInput
-    //         value={todo}
-    //         style={styles.todoInput}
-    //         onChangeText={(value) => setTodo(value)}
-    //       />
-    //       <Button
-    //         title='Add todo'
-    //         onPress={handleAddTodo}
-    //       />
+        {/* form  */}
+        <View style={styles.form}>
+          <TextInput
+            value={todo}
+            style={styles.todoInput}
+            onChangeText={(value) => setTodo(value)}
+          />
+          <Button title="Add todo" onPress={handleAddTodo} />
+        </View>
 
-    //     </View>
-
-    //     {/* list todo */}
-    //     <View style={styles.body}>
-    //       <FlatList
-    //         data={listTodo}
-    //         keyExtractor={item => item.id + ""}
-    //         renderItem={({ item }) => {
-    //           return (
-    //             <Pressable
-    //               onPress={() => deleteTodo(item.id)}
-    //               style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}
-    //             >
-    //               <Text
-    //                 style={styles.todoItem}>{item.name}</Text>
-    //             </Pressable>
-    //           )
-    //         }}
-    //       />
-
-    //     </View>
-    //   </View>
-    // </TouchableWithoutFeedback>
-    <FlexBox />
+        {/* list todo */}
+        <View style={styles.todo}>
+          <FlatList
+            data={listTodo}
+            keyExtractor={(item) => item.id + ""}
+            renderItem={({ item }) => {
+              return (
+                <Pressable
+                  onPress={() => deleteTodo(item.id)}
+                  style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}
+                >
+                  <View style={styles.groupTodo}>
+                    <Text style={styles.todoItem}>{item.name}</Text>
+                    <AntDesign name="close" size={24} color="black" />
+                  </View>
+                </Pressable>
+              );
+            }}
+          />
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
 //css in js
 const styles = StyleSheet.create({
+  groupTodo: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderWidth: 1,
+    borderStyle: "dashed",
+    marginBottom: 15,
+    marginHorizontal: 10,
+    padding: 15
+  },
+
+  container: {
+    paddingTop: 50,
+    flex: 1,
+    backgroundColor: "#fff"
+  },
+
   header: {
     backgroundColor: "orange",
     paddingHorizontal: 20,
     textAlign: "center",
     fontSize: 60
   },
-  container: {
-    paddingTop: 50,
-    flex: 1,
-    backgroundColor: "#fff"
-    // alignItems: 'center',
-    // justifyContent: 'center',
+
+  form: {
+    // flex: 2
+    marginBottom: 20
+  },
+
+  todo: {
+    flex: 1
   },
 
   todoInput: {
@@ -122,15 +137,13 @@ const styles = StyleSheet.create({
   },
 
   todoItem: {
-    fontSize: 20,
-    borderWidth: 1,
-    borderStyle: "dashed",
-    marginBottom: 20,
-    padding: 10
+    fontSize: 20
+    // padding: 10
   },
 
   body: {
     paddingHorizontal: 10,
-    marginBottom: 20
+    marginBottom: 20,
+    flex: 1
   }
 });
