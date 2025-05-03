@@ -36,8 +36,12 @@ const App = () => {
     // </View>
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Trang Chủ" }}
+        />
+        <Stack.Screen name="reivew-detail" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
