@@ -32,7 +32,7 @@ const AppHeader = () => {
         }}
       />
       <Text style={[styles.headerText, globalStyles.globalFont]}>
-        Hoidanit App
+        Mobile App
       </Text>
     </View>
   );
