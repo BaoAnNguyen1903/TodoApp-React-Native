@@ -28,9 +28,11 @@ const App = () => {
   }
 
   return (
-    <NavigationContainer>
-      <AppNavigation />
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <AppNavigation />
+      </NavigationContainer>
+    </>
   );
 };
 
