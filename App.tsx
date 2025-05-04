@@ -1,8 +1,7 @@
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 import HomeScreen from "./components/review/home";
 import DetailScreen from "./components/review/detail";
 import AboutScreen from "./components/review/about";
-
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -12,36 +11,32 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 SplashScreen.preventAutoHideAsync();
-
 const App = () => {
   const [loaded, error] = useFonts({
     [OPENSANS_REGULAR]: require("./assets/fonts/OpenSans-Regular.ttf")
   });
+
   useEffect(() => {
     if (loaded || error) {
       SplashScreen.hideAsync();
     }
   }, [loaded, error]);
+
   if (!loaded && !error) {
     return null;
   }
 
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
-    // <View>
-    //   <HomeScreen />
-    //   <DetailScreen />
-    //   <AboutScreen />
-    // </View>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
+          name="home"
           component={HomeScreen}
           options={{ title: "Trang Chủ" }}
         />
-        <Stack.Screen name="reivew-detail" component={DetailScreen} />
+        <Stack.Screen name="review-detail" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
