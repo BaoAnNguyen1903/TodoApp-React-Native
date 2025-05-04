@@ -10,6 +10,7 @@ import { OPENSANS_REGULAR } from "./utils/const";
 import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
 import AppNavigation from "./components/navigation/app.navigation";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 SplashScreen.preventAutoHideAsync();
 const App = () => {
@@ -28,11 +29,11 @@ const App = () => {
   }
 
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <NavigationContainer>
         <AppNavigation />
       </NavigationContainer>
-    </>
+    </SafeAreaView>
   );
 };
 

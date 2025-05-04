@@ -1,4 +1,11 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View
+} from "react-native";
 import { OPENSANS_REGULAR } from "../../utils/const";
 import {
   NavigationProp,
@@ -6,6 +13,7 @@ import {
   useNavigation
 } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
+import startIcon from "../../assets/images/star.png";
 
 const styles = StyleSheet.create({
   review: {
@@ -27,7 +35,31 @@ const DetailScreen = () => {
       <Text style={styles.reviewText}>Id: {route.params?.id}</Text>
       <Text style={styles.reviewText}>Tiêu đề: {route.params?.title}</Text>
       <Text style={styles.reviewText}>Rating: {route.params?.star}</Text>
-      <Button title="Go Home" onPress={() => navigation.navigate("home")} />
+      <View
+        style={{
+          flexDirection: "row",
+          marginHorizontal: 10,
+          gap: 10
+        }}
+      >
+        <Image style={{ height: 60, width: 50 }} source={startIcon} />
+        <Image
+          style={{ height: 60, width: 50 }}
+          source={require("../../assets/images/star.png")}
+        />
+        <Image
+          style={{ height: 60, width: 50 }}
+          source={require("../../assets/images/star.png")}
+        />
+        <Image
+          style={{ height: 60, width: 50 }}
+          source={require("../../assets/images/star.png")}
+        />
+        <Image
+          style={{ height: 60, width: 50 }}
+          source={require("../../assets/images/star.png")}
+        />
+      </View>
     </View>
   );
 };
